@@ -59,3 +59,5 @@ typings/
 
 # Roon-specific
 config.json
+
+package-lock.json
