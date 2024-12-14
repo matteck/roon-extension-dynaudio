@@ -62,20 +62,20 @@ function makelayout(settings) {
     ],
     setting: "zone",
   });
-  l.layout.push({
-    type:    "dropdown",
-    title:   "Input Source",
-    values:  [
-      { value: inputType.minijack, title: "Mini Jack" },
-      { value: inputType.line, title: "Line" },
-      { value: inputType.optical, title: "Optical" },
-      { value: inputType.coax, title: "Coax" },
-      { value: inputType.usb, title: "USB" },
-      { value: inputType.bluetooth, title: "Bluetooth" },
-      { value: inputType.stream, title: "Stream" },
-    ],
-    setting: "source",
-  });
+  // l.layout.push({
+  //   type:    "dropdown",
+  //   title:   "Input Source",
+  //   values:  [
+  //     { value: inputType.minijack, title: "Mini Jack" },
+  //     { value: inputType.line, title: "Line" },
+  //     { value: inputType.optical, title: "Optical" },
+  //     { value: inputType.coax, title: "Coax" },
+  //     { value: inputType.usb, title: "USB" },
+  //     { value: inputType.bluetooth, title: "Bluetooth" },
+  //     { value: inputType.stream, title: "Stream" },
+  //   ],
+  //   setting: "source",
+  // });
   l.layout.push({
     type:    "integer",
     title:   "Initial Volume",
@@ -237,14 +237,41 @@ function processTCPResponse(message) {
   }
 }
 
-const dynaudioSourceControl = svc_source_control.new_device({
+const dynaudioSourceControlOptical = svc_source_control.new_device({
   state: {
+    control_key: 1001,
     display_name: "Optical",
     supports_standby: false,
     status: "selected"
   },
   convenience_switch: function (req, opts) {
-    sendInputChange(mysettings.source);
+    sendInputChange(inputType.optical);
+    req.send_complete("Success");
+  }
+});
+
+const dynaudioSourceControlCoax = svc_source_control.new_device({
+  state: {
+    control_key: 1002,
+    display_name: "Coax",
+    supports_standby: false,
+    status: "selected"
+  },
+  convenience_switch: function (req, opts) {
+    sendInputChange(inputType.coax);
+    req.send_complete("Success");
+  }
+});
+
+const dynaudioSourceControlUSB = svc_source_control.new_device({
+  state: {
+    control_key: 1003,
+    display_name: "USB",
+    supports_standby: false,
+    status: "selected"
+  },
+  convenience_switch: function (req, opts) {
+    sendInputChange(inputType.usb);
     req.send_complete("Success");
   }
 });
