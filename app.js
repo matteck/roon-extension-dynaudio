@@ -80,7 +80,7 @@ function makelayout(settings) {
     type:    "integer",
     title:   "Initial Volume",
     min:     0,
-    max:     31,
+    max:     28, // Hardware max is 31, which is too loud for me
     setting: "initialvolume",
   });
 
