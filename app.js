@@ -24,19 +24,19 @@ const zone = {
 }
 
 const roon = new RoonApi({
-    extension_id:        'com.naepflin.roon-dynaudio',
-    display_name:        "Dynaudio Volume Control",
-    display_version:     "1.0.0",
-    publisher:           'Ivo Näpflin',
-    email:               'git@naepflin.com',
-    website:             'https://github.com/naepflin/roon-extension-dynaudio',
+  extension_id:        'us.eckha.dynaudio',
+  display_name:        "Dynaudio",
+  display_version:     "1.0.1",
+  publisher:           'Ivo Näpflin (modified by Matt Eckhaus)',
+  email:               'git@eckha.us',
+  website:             'https://github.com/matteck/roon-extension-dynaudio',
 });
 
 var mysettings = roon.load_config("settings") || {
-    ip: "",
-    zone: zone.red,
-    source: inputType.usb,
-    initialvolume: 1,
+  ip: "",
+  zone: zone.red,
+  source: inputType.usb,
+  initialvolume: 1,
 };
 
 function makelayout(settings) {
@@ -119,7 +119,7 @@ const initialVolume = isNaN(parseInt(mysettings.initialvolume)) ? 1 : parseInt(m
 
 const device = {
   state: {
-    display_name: "Dynaudio Connect",
+    display_name: "Connect",
     volume_type:  "number",
     volume_min:   0,
     volume_max:   31,
@@ -239,7 +239,7 @@ function processTCPResponse(message) {
 
 const dynaudioSourceControl = svc_source_control.new_device({
   state: {
-    display_name: "Dynaudio Connect",
+    display_name: "Optical",
     supports_standby: false,
     status: "selected"
   },
