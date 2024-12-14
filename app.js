@@ -36,7 +36,7 @@ var mysettings = roon.load_config("settings") || {
   ip: "",
   zone: zone.red,
   source: inputType.usb,
-  initialvolume: 1,
+  initialvolume: 14,
 };
 
 function makelayout(settings) {
@@ -122,7 +122,7 @@ const device = {
     display_name: "Connect",
     volume_type:  "number",
     volume_min:   0,
-    volume_max:   31,
+    volume_max:   28, // Hardware max is 31, which is too loud for me
     volume_value: initialVolume,
     volume_step:  1,
     is_muted:     false
